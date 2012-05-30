@@ -6,6 +6,7 @@ Summary:        lzop
 URL:            http://www.lzop.org
 Group:          Applications/Text
 Source:         %{name}-%{version}.tar.gz
+Source1001: packaging/lzop.manifest 
 BuildRequires:  lzo
 BuildRequires:  lzo-devel
 
@@ -23,6 +24,7 @@ of the GNU General Public License (GPL).
 %setup -q
 
 %build
+cp %{SOURCE1001} .
 %configure --disable-nls
 make PR_PROGRAM=%{_bindir}/pr
 
@@ -35,6 +37,7 @@ rm -rf %{buildroot}
 %docs_package 
 
 %files 
+%manifest lzop.manifest
 %defattr(-,root,root,-)
 %doc NEWS README COPYING
 %{_bindir}/*
