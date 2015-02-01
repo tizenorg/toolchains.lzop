@@ -28,13 +28,12 @@ make PR_PROGRAM=%{_bindir}/pr
 %install
 %make_install
 
+%remove_docs
+
 %clean
 rm -rf %{buildroot}
-
-%docs_package 
 
 %files 
 %defattr(-,root,root,-)
 %doc NEWS README COPYING
 %{_bindir}/*
-%{_mandir}/*/*
