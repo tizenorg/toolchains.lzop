@@ -1,15 +1,13 @@
 Name:           lzop
 Version:        1.03
 Release:        1
-License:        GPLv2+
+License:        GPL-2.0+
 Summary:        lzop
 URL:            http://www.lzop.org
 Group:          Applications/Text
 Source:         %{name}-%{version}.tar.gz
-Source1001: packaging/lzop.manifest 
 BuildRequires:  lzo
 BuildRequires:  lzo-devel
-
 
 %description
 lzop is a file compressor which is very similar to gzip. lzop uses
@@ -24,21 +22,18 @@ of the GNU General Public License (GPL).
 %setup -q
 
 %build
-cp %{SOURCE1001} .
 %configure --disable-nls
 make PR_PROGRAM=%{_bindir}/pr
 
 %install
 %make_install
 
+%remove_docs
+
 %clean
 rm -rf %{buildroot}
 
-%docs_package 
-
 %files 
-%manifest lzop.manifest
 %defattr(-,root,root,-)
 %doc NEWS README COPYING
 %{_bindir}/*
-%{_mandir}/*/*
