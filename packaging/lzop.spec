@@ -33,7 +33,7 @@ make PR_PROGRAM=%{_bindir}/pr
 %clean
 rm -rf %{buildroot}
 
-%files 
+%files
 %defattr(-,root,root,-)
 %doc NEWS README COPYING
 %{_bindir}/*
